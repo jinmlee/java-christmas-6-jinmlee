@@ -1,5 +1,7 @@
 package christmas.util;
 
+import java.util.HashMap;
+
 public class InputCheck {
     private static final int minDate = 1;
     private static final int maxDate = 31;
@@ -19,7 +21,7 @@ public class InputCheck {
     }
 
     public static void checkDateRange(int date) {
-        if(date < minDate || date > maxDate){
+        if (date < minDate || date > maxDate) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
         }
     }
