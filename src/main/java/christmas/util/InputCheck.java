@@ -43,7 +43,7 @@ public class InputCheck {
 
     public static void checkOrderMenus(List<String> inputMenus, HashMap<String, Integer> orderMenus) {
         for (String menu : inputMenus) {
-            List<String> nameAndCount = checkMenuFormatValid(menu);
+            List<String> nameAndCount = checkLineSeparator(menu);
             String menuName = checkInvalidMenuName(nameAndCount.get(nameIndex));
             int menuCount = checkInvalidNumber(nameAndCount.get(countIndex));
             checkDuplicateName(menuName, orderMenus);
@@ -51,7 +51,7 @@ public class InputCheck {
         }
     }
 
-    public static List<String> checkMenuFormatValid(String inputMenu) {
+    public static List<String> checkLineSeparator(String inputMenu) {
         List<String> nameAndCount = Arrays.asList(inputMenu.split("-"));
         if (nameAndCount.size() != 2) {
             throw new IllegalArgumentException();
@@ -77,19 +77,16 @@ public class InputCheck {
     public static void checkMenuCount(HashMap<String, Integer> orderMenus) {
         int orderCount = 0;
         for (int menuCount : orderMenus.values()) {
-            if(menuCount < one){
-                throw new IllegalArgumentException();
-            }
-            orderCount = checkTotalMenuCount(orderCount, menuCount);
+            checkRangeMenuCount(menuCount);
+            orderCount += menuCount;
         }
+        checkRangeMenuCount(orderCount);
     }
 
-    public static int checkTotalMenuCount(int orderCount, int menuCount) {
-        orderCount += menuCount;
-        if (orderCount > maxOrderCount || orderCount < one) {
+    public static void checkRangeMenuCount(int menuCount) {
+        if (menuCount > maxOrderCount || menuCount < one) {
             throw new IllegalArgumentException();
         }
-        return  orderCount;
     }
 
     public static void checkLastComma(String input) {

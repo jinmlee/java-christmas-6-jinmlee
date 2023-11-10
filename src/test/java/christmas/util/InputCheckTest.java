@@ -102,12 +102,12 @@ class InputCheckTest {
     })
     void checkMenuFormatValid(String orderMenu, boolean result) {
         if (result == true) {
-            assertThatCode(() -> inputCheck.checkMenuFormatValid(orderMenu))
+            assertThatCode(() -> inputCheck.checkLineSeparator(orderMenu))
                     .doesNotThrowAnyException();
         }
         if (result == false) {
             assertThatExceptionOfType(IllegalArgumentException.class)
-                    .isThrownBy(() -> inputCheck.checkMenuFormatValid(orderMenu));
+                    .isThrownBy(() -> inputCheck.checkLineSeparator(orderMenu));
         }
     }
 
