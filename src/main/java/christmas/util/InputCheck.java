@@ -76,10 +76,18 @@ public class InputCheck {
     public static void checkMenuCount(HashMap<String, Integer> orderMenus) {
         int orderCount = 0;
         for (int menuCount : orderMenus.values()) {
-            orderCount += menuCount;
+            if(menuCount < one){
+                throw new IllegalArgumentException();
+            }
+            orderCount = checkTotalMenuCount(orderCount, menuCount);
         }
+    }
+
+    public static int checkTotalMenuCount(int orderCount, int menuCount) {
+        orderCount += menuCount;
         if (orderCount > maxOrderCount || orderCount < one) {
             throw new IllegalArgumentException();
         }
+        return  orderCount;
     }
 }
