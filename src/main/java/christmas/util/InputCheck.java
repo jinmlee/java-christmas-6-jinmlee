@@ -43,7 +43,7 @@ public class InputCheck {
     public static void checkOrderMenus(List<String> inputMenus, HashMap<String, Integer> orderMenus) {
         for (String menu : inputMenus) {
             List<String> nameAndCount = checkMenuFormatValid(menu);
-            String menuName = checkInvalidMenu(nameAndCount.get(nameIndex));
+            String menuName = checkInvalidMenuName(nameAndCount.get(nameIndex));
             int menuCount = checkInvalidNumber(nameAndCount.get(countIndex));
             checkDuplicateName(menuName, orderMenus);
             orderMenus.put(menuName, menuCount);
@@ -58,7 +58,7 @@ public class InputCheck {
         return nameAndCount;
     }
 
-    public static String checkInvalidMenu(String orderMenuName) {
+    public static String checkInvalidMenuName(String orderMenuName) {
         for (Menu menu : Menu.values()) {
             if (menu.getName().equals(orderMenuName)) {
                 return orderMenuName;
