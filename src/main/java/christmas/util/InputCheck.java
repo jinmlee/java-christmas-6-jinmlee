@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InputCheck {
-    private static final int minDate = 1;
+    private static final int one = 1;
     private static final int maxDate = 31;
     private static final int maxOrderCount = 20;
+    private static final int nameIndex = 0;
+    private static final int countIndex = 1;
 
     public static int validateDate(String input) {
         int date = checkInvalidNumber(input);
@@ -20,13 +22,13 @@ public class InputCheck {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 숫자입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException();
         }
     }
 
     public static void checkDateRange(int date) {
-        if (date < minDate || date > maxDate) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        if (date < one || date > maxDate) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -41,8 +43,8 @@ public class InputCheck {
     public static void checkOrderMenus(List<String> inputMenus, HashMap<String, Integer> orderMenus) {
         for (String menu : inputMenus) {
             List<String> nameAndCount = checkMenuFormatValid(menu);
-            String menuName = checkInvalidMenu(nameAndCount.get(0));
-            int menuCount = checkInvalidNumber(nameAndCount.get(1));
+            String menuName = checkInvalidMenu(nameAndCount.get(nameIndex));
+            int menuCount = checkInvalidNumber(nameAndCount.get(countIndex));
             checkDuplicateName(menuName, orderMenus);
             orderMenus.put(menuName, menuCount);
         }
@@ -51,7 +53,7 @@ public class InputCheck {
     public static List<String> checkMenuFormatValid(String inputMenu) {
         List<String> nameAndCount = Arrays.asList(inputMenu.split("-"));
         if (nameAndCount.size() != 2) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException();
         }
         return nameAndCount;
     }
@@ -62,12 +64,12 @@ public class InputCheck {
                 return orderMenuName;
             }
         }
-        throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        throw new IllegalArgumentException();
     }
 
     public static void checkDuplicateName(String menuName, HashMap<String, Integer> orderMenus) {
         if (orderMenus.containsKey(menuName)) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException();
         }
     }
 
@@ -76,8 +78,8 @@ public class InputCheck {
         for (int menuCount : orderMenus.values()) {
             orderCount += menuCount;
         }
-        if (orderCount > maxOrderCount) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        if (orderCount > maxOrderCount || orderCount < one) {
+            throw new IllegalArgumentException();
         }
     }
 }
