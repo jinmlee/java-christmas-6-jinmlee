@@ -32,8 +32,8 @@ public class InputCheck {
         }
     }
 
-    public static HashMap<String, Integer> validateOrder(String input) {
-        HashMap<String, Integer> orderMenus = new HashMap<>();
+    public static HashMap<Menu, Integer> validateOrder(String input) {
+        HashMap<Menu, Integer> orderMenus = new HashMap<>();
         List<String> inputMenus = Arrays.asList(input.split(","));
         checkOrderMenus(inputMenus, orderMenus);
         checkMenuCount(orderMenus);
@@ -41,10 +41,10 @@ public class InputCheck {
         return orderMenus;
     }
 
-    public static void checkOrderMenus(List<String> inputMenus, HashMap<String, Integer> orderMenus) {
+    public static void checkOrderMenus(List<String> inputMenus, HashMap<Menu, Integer> orderMenus) {
         for (String menu : inputMenus) {
             List<String> nameAndCount = checkLineSeparator(menu);
-            String menuName = checkInvalidMenuName(nameAndCount.get(nameIndex));
+            Menu menuName = checkInvalidMenuName(nameAndCount.get(nameIndex));
             int menuCount = checkInvalidNumber(nameAndCount.get(countIndex));
             checkDuplicateName(menuName, orderMenus);
             orderMenus.put(menuName, menuCount);
@@ -59,28 +59,28 @@ public class InputCheck {
         return nameAndCount;
     }
 
-    public static String checkInvalidMenuName(String orderMenuName) {
+    public static Menu checkInvalidMenuName(String orderMenuName) {
         for (Menu menu : Menu.values()) {
             if (menu.getName().equals(orderMenuName)) {
-                return orderMenuName;
+                return menu;
             }
         }
         throw new IllegalArgumentException();
     }
 
-    public static void checkDuplicateName(String menuName, HashMap<String, Integer> orderMenus) {
-        if (orderMenus.containsKey(menuName)) {
+    public static void checkDuplicateName(Menu menu, HashMap<Menu, Integer> orderMenus) {
+        if (orderMenus.containsKey(menu)) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static void checkMenuCount(HashMap<String, Integer> orderMenus) {
-        int orderCount = 0;
+    public static void checkMenuCount(HashMap<Menu, Integer> orderMenus) {
+        int totalCount = 0;
         for (int menuCount : orderMenus.values()) {
             checkRangeMenuCount(menuCount);
-            orderCount += menuCount;
+            totalCount += menuCount;
         }
-        checkRangeMenuCount(orderCount);
+        checkRangeMenuCount(totalCount);
     }
 
     public static void checkRangeMenuCount(int menuCount) {

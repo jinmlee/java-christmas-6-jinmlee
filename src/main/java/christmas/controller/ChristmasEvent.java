@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.enums.Menu;
 import christmas.model.Receipt;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -11,12 +12,17 @@ public class ChristmasEvent {
 
     public void startEvent() {
         takeOrder();
-        outputView.printOrderMenu(receipt.getOrderMenus());
+        printOrder();
     }
 
     public void takeOrder() {
         int date = InputView.readDate();
-        HashMap<String, Integer> orderMenus = InputView.order();
+        HashMap<Menu, Integer> orderMenus = InputView.order();
         receipt = new Receipt(date, orderMenus);
+    }
+
+    public void printOrder() {
+        outputView.printOrderMenu(receipt.getOrderMenus());
+        outputView.printTotalPrice(receipt.getTotalPrice());
     }
 }

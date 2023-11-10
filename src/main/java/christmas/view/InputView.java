@@ -1,6 +1,7 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import christmas.enums.Menu;
 import christmas.util.InputCheck;
 import java.util.HashMap;
 
@@ -16,7 +17,7 @@ public class InputView {
         }
     }
 
-    public static HashMap<String, Integer> order() {
+    public static HashMap<Menu, Integer> order() {
         while (true) {
             try {
                 System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
