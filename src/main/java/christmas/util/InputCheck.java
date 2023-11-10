@@ -37,6 +37,7 @@ public class InputCheck {
         List<String> inputMenus = Arrays.asList(input.split(","));
         checkOrderMenus(inputMenus, orderMenus);
         checkMenuCount(orderMenus);
+        checkLastComma(input);
         return orderMenus;
     }
 
@@ -89,5 +90,12 @@ public class InputCheck {
             throw new IllegalArgumentException();
         }
         return  orderCount;
+    }
+
+    public static void checkLastComma(String input) {
+        boolean endsWithComma = input.endsWith(",");
+        if (endsWithComma) {
+            throw new IllegalArgumentException();
+        }
     }
 }

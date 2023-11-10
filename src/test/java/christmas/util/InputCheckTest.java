@@ -171,8 +171,8 @@ class InputCheckTest {
             "\'바비큐립-1,해산물파스타-3,바비큐립-1\', false",
             "\'초코케이크,해산물파스타-3,바비큐립-1\', false",
             "\'바비큐립-10,초코케이크-11\', false",
-            "\'양송이수프-0,제로콜라-10\', false"
-//            "\'바비큐립-1,초코케이크-1,\', false"
+            "\'양송이수프-0,제로콜라-10\', false",
+            "\'바비큐립-1,초코케이크-1,\', false"
     })
     void validateOrder(String inputMenu, boolean result) {
         if (result == true) {
