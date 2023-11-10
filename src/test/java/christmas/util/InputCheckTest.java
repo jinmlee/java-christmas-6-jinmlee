@@ -65,6 +65,31 @@ class InputCheckTest {
         }
     }
 
+    @DisplayName("날짜 입력 예외처리 큰단위 테스트")
+    @ParameterizedTest
+    @CsvSource({
+            "1, true",
+            "31, true",
+            "10, true",
+            "32, false",
+            "0, false",
+            "ㅁㅁ, false",
+            "a, false",
+            "2 4, false",
+            "\' \', false",
+            "\'  10\',false"
+    })
+    void validateDate(String date, boolean result) {
+        if (result == true) {
+            assertThatCode(() -> inputCheck.validateDate(date))
+                    .doesNotThrowAnyException();
+        }
+        if (result == false) {
+            assertThatExceptionOfType(IllegalArgumentException.class)
+                    .isThrownBy(() -> inputCheck.validateDate(date));
+        }
+    }
+
     @DisplayName("주문 메뉴의 이름과 개수가 올바른 형식으로 입력되지 않으면 예외처리")
     @ParameterizedTest
     @CsvSource({
@@ -135,5 +160,28 @@ class InputCheckTest {
     void checkMenuCount() {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> inputCheck.checkMenuCount(orderMenus));
+    }
+
+    @DisplayName("주문 메뉴의 이름과 개수 입력 예외처리 큰단위 테스트")
+    @ParameterizedTest
+    @CsvSource({
+            "\'양송이수프-3,타파스-1,초코케이크-1,아이스크림-5\', true",
+            "\'제로콜라-3,샴페인-3,시저샐러드-4,티본스테이크-2\', true",
+            "\'아이스크림-5,해산물파스타-5,바비큐립-5,크리스마스파스타-5\', true",
+            "\'바비큐립-1,해산물파스타-3,바비큐립-1\', false",
+            "\'초코케이크,해산물파스타-3,바비큐립-1\', false",
+            "\'바비큐립-10,초코케이크-11\', false"
+//            "\'양송이수프-0,제로콜라-10\', false",
+//            "\'바비큐립-1,초코케이크-1,\', false"
+    })
+    void validateOrder(String inputMenu, boolean result) {
+        if (result == true) {
+            assertThatCode(() -> inputCheck.validateOrder(inputMenu))
+                    .doesNotThrowAnyException();
+        }
+        if (result == false) {
+            assertThatExceptionOfType(IllegalArgumentException.class)
+                    .isThrownBy(() -> inputCheck.validateOrder(inputMenu));
+        }
     }
 }
