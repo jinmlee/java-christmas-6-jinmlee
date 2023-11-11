@@ -35,9 +35,10 @@ public class InputCheck {
     public static HashMap<Menu, Integer> validateOrder(String input) {
         HashMap<Menu, Integer> orderMenus = new HashMap<>();
         List<String> inputMenus = Arrays.asList(input.split(","));
+        checkLastComma(input);
         checkOrderMenus(inputMenus, orderMenus);
         checkMenuCount(orderMenus);
-        checkLastComma(input);
+        checkOnlyOrderBeverage(orderMenus);
         return orderMenus;
     }
 
@@ -94,5 +95,14 @@ public class InputCheck {
         if (endsWithComma) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static void checkOnlyOrderBeverage(HashMap<Menu, Integer> orderMenus){
+        for(Menu menu : orderMenus.keySet()){
+            if(!menu.getType().equals("BEVERAGE")){
+                return;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 }
