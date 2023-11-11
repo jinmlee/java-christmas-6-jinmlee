@@ -24,5 +24,6 @@ public class ChristmasEvent {
     public void printOrder() {
         outputView.printOrderMenu(receipt.getOrderMenus());
         outputView.printTotalPrice(receipt.getTotalPrice());
+        outputView.printPresentMenu(receipt.getTotalPrice());
     }
 }

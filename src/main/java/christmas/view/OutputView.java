@@ -16,5 +16,16 @@ public class OutputView {
     public void printTotalPrice(int totalPrice){
         System.out.println("<할인 전 총주문 금액>");
         System.out.println(totalPrice + "원");
+        System.out.println();
+    }
+
+    public void printPresentMenu(int totalPrice){
+        System.out.println("<증정 메뉴>");
+        if(totalPrice >= 120000){
+            System.out.println("샴페인 1개");
+        }
+        if(totalPrice < 120000){
+            System.out.println("없음");
+        }
     }
 }

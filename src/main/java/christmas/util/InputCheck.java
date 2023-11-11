@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InputCheck {
-    private static final int one = 1;
-    private static final int maxDate = 31;
-    private static final int maxOrderCount = 20;
-    private static final int nameIndex = 0;
-    private static final int countIndex = 1;
+    private static final int ONE = 1;
+    private static final int MAX_DATE = 31;
+    private static final int MAX_ORDER_COUNT = 20;
+    private static final int NAME_INDEX = 0;
+    private static final int COUNT_INDEX = 1;
 
     public static int validateDate(String input) {
         int date = checkInvalidNumber(input);
@@ -27,7 +27,7 @@ public class InputCheck {
     }
 
     public static void checkDateRange(int date) {
-        if (date < one || date > maxDate) {
+        if (date < ONE || date > MAX_DATE) {
             throw new IllegalArgumentException();
         }
     }
@@ -45,8 +45,8 @@ public class InputCheck {
     public static void checkOrderMenus(List<String> inputMenus, HashMap<Menu, Integer> orderMenus) {
         for (String menu : inputMenus) {
             List<String> nameAndCount = checkLineSeparator(menu);
-            Menu menuName = checkInvalidMenuName(nameAndCount.get(nameIndex));
-            int menuCount = checkInvalidNumber(nameAndCount.get(countIndex));
+            Menu menuName = checkInvalidMenuName(nameAndCount.get(NAME_INDEX));
+            int menuCount = checkInvalidNumber(nameAndCount.get(COUNT_INDEX));
             checkDuplicateName(menuName, orderMenus);
             orderMenus.put(menuName, menuCount);
         }
@@ -85,7 +85,7 @@ public class InputCheck {
     }
 
     public static void checkRangeMenuCount(int menuCount) {
-        if (menuCount > maxOrderCount || menuCount < one) {
+        if (menuCount > MAX_ORDER_COUNT || menuCount < ONE) {
             throw new IllegalArgumentException();
         }
     }
