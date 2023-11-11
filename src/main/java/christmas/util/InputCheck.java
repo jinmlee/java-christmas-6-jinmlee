@@ -1,6 +1,7 @@
 package christmas.util;
 
 import christmas.enums.Menu;
+import christmas.enums.MenuType;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -99,7 +100,7 @@ public class InputCheck {
 
     public static void checkOnlyOrderBeverage(HashMap<Menu, Integer> orderMenus){
         for(Menu menu : orderMenus.keySet()){
-            if(!menu.getType().equals("BEVERAGE")){
+            if(!menu.getType().equals(MenuType.BEVERAGE)){
                 return;
             }
         }

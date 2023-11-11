@@ -1,27 +1,27 @@
 package christmas.enums;
 
 public enum Menu {
-    YANGSONG_SOUP("양송이수프", 6_000, "APPETIZER"),
-    TAPAS("타파스", 5_500, "APPETIZER"),
-    CAESAR_SALAD("시저샐러드", 8_000, "APPETIZER"),
+    YANGSONG_SOUP("양송이수프", 6_000, MenuType.APPETIZER),
+    TAPAS("타파스", 5_500, MenuType.APPETIZER),
+    CAESAR_SALAD("시저샐러드", 8_000, MenuType.APPETIZER),
 
-    TBONE_STEAK("티본스테이크", 55_000, "MAIN"),
-    BARBECUE_RIBS("바비큐립", 54_000, "MAIN"),
-    SEAFOOD_PASTA("해산물파스타", 35_000, "MAIN"),
-    CHRISTMAS_PASTA("크리스마스파스타", 25_000, "MAIN"),
+    TBONE_STEAK("티본스테이크", 55_000, MenuType.MAIN),
+    BARBECUE_RIBS("바비큐립", 54_000, MenuType.MAIN),
+    SEAFOOD_PASTA("해산물파스타", 35_000, MenuType.MAIN),
+    CHRISTMAS_PASTA("크리스마스파스타", 25_000, MenuType.MAIN),
 
-    CHOCO_CAKE("초코케이크", 15_000, "DESSERT"),
-    ICECREAM("아이스크림", 5_000, "DESSERT"),
+    CHOCO_CAKE("초코케이크", 15_000, MenuType.DESSERT),
+    ICECREAM("아이스크림", 5_000, MenuType.DESSERT),
 
-    ZERO_COLA("제로콜라", 3_000, "BEVERAGE"),
-    RED_WINE("레드와인", 60_000, "BEVERAGE"),
-    CHAMPAGNE("샴페인", 25_000, "BEVERAGE");
+    ZERO_COLA("제로콜라", 3_000, MenuType.BEVERAGE),
+    RED_WINE("레드와인", 60_000, MenuType.BEVERAGE),
+    CHAMPAGNE("샴페인", 25_000, MenuType.BEVERAGE);
 
     private String name;
     private int price;
-    private String type;
+    private MenuType type;
 
-    Menu(String name, int price, String type) {
+    Menu(String name, int price, MenuType type) {
         this.name = name;
         this.price = price;
         this.type = type;
@@ -35,7 +35,7 @@ public enum Menu {
         return price;
     }
 
-    public String getType() {
+    public MenuType getType() {
         return type;
     }
 }
