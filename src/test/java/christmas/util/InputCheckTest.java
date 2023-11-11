@@ -3,6 +3,7 @@ package christmas.util;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import christmas.enums.Menu;
 import java.util.HashMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,15 +13,15 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class InputCheckTest {
     private InputCheck inputCheck;
-    private HashMap<String, Integer> orderMenus;
+    private HashMap<Menu, Integer> orderMenus;
 
     @BeforeEach
     void setUp() {
         inputCheck = new InputCheck();
         orderMenus = new HashMap<>();
-        orderMenus.put("해산물파스타", 10);
-        orderMenus.put("제로콜라", 7);
-        orderMenus.put("타파스", 4);
+        orderMenus.put(Menu.SEAFOOD_PASTA, 10);
+        orderMenus.put(Menu.ZERO_COLA, 7);
+        orderMenus.put(Menu.TAPAS, 4);
     }
 
     @DisplayName("올바른 숫자가 입력되지 않으면 예외처리")
@@ -137,21 +138,22 @@ class InputCheckTest {
     @DisplayName("주문한 메뉴에 중복된 메뉴가 있으면 예외처리")
     @ParameterizedTest
     @CsvSource({
-            "양송이수프, true",
-            "티본스테이크, true",
-            "바비큐립, true",
-            "해산물파스타, false",
-            "제로콜라, false",
-            "타파스, false"
+            "YANGSONG_SOUP, true",
+            "TBONE_STEAK, true",
+            "BARBECUE_RIBS, true",
+            "SEAFOOD_PASTA, false",
+            "ZERO_COLA, false",
+            "TAPAS, false"
     })
     void checkDuplicateName(String menuName, boolean result) {
+        Menu menu = Menu.valueOf(menuName);
         if (result == true) {
-            assertThatCode(() -> inputCheck.checkDuplicateName(menuName, orderMenus))
+            assertThatCode(() -> inputCheck.checkDuplicateName(menu, orderMenus))
                     .doesNotThrowAnyException();
         }
         if (result == false) {
             assertThatExceptionOfType(IllegalArgumentException.class)
-                    .isThrownBy(() -> inputCheck.checkDuplicateName(menuName, orderMenus));
+                    .isThrownBy(() -> inputCheck.checkDuplicateName(menu, orderMenus));
         }
     }
 
