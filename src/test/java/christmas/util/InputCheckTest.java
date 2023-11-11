@@ -157,6 +157,17 @@ class InputCheckTest {
         }
     }
 
+    @DisplayName("주문 목록에 음료만 있을시 예외처리")
+    @Test
+    void checkOnlyOrderBeverage(){
+        HashMap<Menu, Integer> onlyBeverageMenu = new HashMap<>();
+        onlyBeverageMenu.put(Menu.ZERO_COLA, 1);
+        onlyBeverageMenu.put(Menu.CHAMPAGNE, 5);
+        onlyBeverageMenu.put(Menu.RED_WINE, 4);
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> inputCheck.checkOnlyOrderBeverage(onlyBeverageMenu));
+    }
+
     @DisplayName("주문한 메뉴의 개수가 20개가 넘으면 예외처리")
     @Test
     void checkMenuCount() {
@@ -174,7 +185,8 @@ class InputCheckTest {
             "\'초코케이크,해산물파스타-3,바비큐립-1\', false",
             "\'바비큐립-10,초코케이크-11\', false",
             "\'양송이수프-0,제로콜라-10\', false",
-            "\'바비큐립-1,초코케이크-1,\', false"
+            "\'바비큐립-1,초코케이크-1,\', false",
+            "\'레드와인-1,제로콜라-5,샴페인-3\', false"
     })
     void validateOrder(String inputMenu, boolean result) {
         if (result == true) {
