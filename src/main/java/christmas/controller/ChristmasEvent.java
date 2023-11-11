@@ -12,7 +12,8 @@ public class ChristmasEvent {
 
     public void startEvent() {
         takeOrder();
-        printOrder();
+        printOrderMenu();
+        applyEvent();
     }
 
     public void takeOrder() {
@@ -21,9 +22,20 @@ public class ChristmasEvent {
         receipt = new Receipt(date, orderMenus);
     }
 
-    public void printOrder() {
+    public void printOrderMenu() {
         outputView.printOrderMenu(receipt.getOrderMenus());
         outputView.printTotalPrice(receipt.getTotalPrice());
-        outputView.printPresentMenu(receipt.getTotalPrice());
+
+    }
+
+    public void applyEvent(){
+        outputView.printPresentMenu(checkPresentEvent());
+    }
+
+    public boolean checkPresentEvent(){
+        if(receipt.getTotalPrice() >= 120000){
+            return true;
+        }
+        return false;
     }
 }

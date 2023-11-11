@@ -19,12 +19,12 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printPresentMenu(int totalPrice){
+    public void printPresentMenu(boolean checkTotalPrice){
         System.out.println("<증정 메뉴>");
-        if(totalPrice >= 120000){
+        if(checkTotalPrice){
             System.out.println("샴페인 1개");
         }
-        if(totalPrice < 120000){
+        if(checkTotalPrice){
             System.out.println("없음");
         }
     }

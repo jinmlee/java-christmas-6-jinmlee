@@ -16,6 +16,14 @@ public class Receipt {
         return orderMenus;
     }
 
+    public int getDate() {
+        return date;
+    }
+
+    public int getDayWeek() {
+        return date % 7;
+    }
+
     public int getTotalPrice() {
         int totalPrice = 0;
         for (Menu menu : orderMenus.keySet()) {
