@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.enums.Menu;
+import christmas.event.ChristmasDayEvent;
 import christmas.event.EventInterface;
 import christmas.event.WeekdayEvent;
 import christmas.event.WeekendEvent;
@@ -11,7 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ChristmasEvent {
-    private final List<EventInterface> EVENTS = List.of(new WeekdayEvent(), new WeekendEvent());
+    private final List<EventInterface> EVENTS
+            = List.of(new WeekdayEvent(), new WeekendEvent(), new ChristmasDayEvent());
     private Receipt receipt;
     private OutputView outputView = new OutputView();
 

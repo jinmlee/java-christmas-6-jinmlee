@@ -7,8 +7,7 @@ public enum Day {
     MONDAY(4),
     TUESDAY(5),
     WEDNESDAY(6),
-    THURSDAY(7),
-    CHRISTMAS(25);
+    THURSDAY(7);
 
     private int dayOfWeek;
 
