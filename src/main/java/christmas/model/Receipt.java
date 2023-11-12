@@ -36,6 +36,16 @@ public class Receipt extends Order {
         addApplyDiscount(Event.WEEKDAY, discount);
     }
 
+    public void applyWeekendDiscount() {
+        int discount = 0;
+        for (Menu menu : getOrderMenus().keySet()) {
+            if (menu.getType().equals(MenuType.MAIN)) {
+                discount += Event.WEEKEND.getPayback(getOrderMenus().get(menu));
+            }
+        }
+        addApplyDiscount(Event.WEEKEND, discount);
+    }
+
     public void addApplyDiscount(Event event, int discount){
         if(getTotalPrice() >= EVENT_MIN_PAYMENT && discount > 0){
             applyDiscount.put(event, discount);

@@ -33,6 +33,9 @@ public class ChristmasEvent {
         if (Event.WEEKDAY.getDays().contains(receipt.getDayOfWeek())) {
             receipt.applyWeekDayDiscount();
         }
+        if (Event.WEEKEND.getDays().contains(receipt.getDayOfWeek())) {
+            receipt.applyWeekendDiscount();
+        }
 
 
         outputView.printApplyDiscount(receipt.getApplyDiscount());
