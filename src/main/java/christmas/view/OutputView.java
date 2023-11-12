@@ -16,12 +16,11 @@ public class OutputView {
 
     public void printTotalPrice(int totalPrice) {
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(totalPrice + "원");
-        System.out.println();
+        System.out.printf("%,d원\n", totalPrice);
     }
 
     public void printPresentMenu(boolean checkTotalPrice) {
-        System.out.println("<증정 메뉴>");
+        System.out.println("\n<증정 메뉴>");
         if (checkTotalPrice) {
             System.out.println(Menu.CHAMPAGNE.getName() + " 1개");
             return;
@@ -36,7 +35,7 @@ public class OutputView {
             return;
         }
         for (Event event : applyDiscount.keySet()) {
-            System.out.println(event.getName() + ": -" + applyDiscount.get(event) + "원");
+            System.out.printf("%s: -%,d원\n", event.getName(), applyDiscount.get(event));
         }
     }
 }
