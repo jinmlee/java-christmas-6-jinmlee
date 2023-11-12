@@ -13,19 +13,18 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printTotalPrice(int totalPrice){
+    public void printTotalPrice(int totalPrice) {
         System.out.println("<할인 전 총주문 금액>");
         System.out.println(totalPrice + "원");
         System.out.println();
     }
 
-    public void printPresentMenu(boolean checkTotalPrice){
+    public void printPresentMenu(boolean checkTotalPrice) {
         System.out.println("<증정 메뉴>");
-        if(checkTotalPrice){
-            System.out.println("샴페인 1개");
+        if (checkTotalPrice) {
+            System.out.println(Menu.CHAMPAGNE.getName() + " 1개");
+            return;
         }
-        if(checkTotalPrice){
-            System.out.println("없음");
-        }
+        System.out.println("없음");
     }
 }
