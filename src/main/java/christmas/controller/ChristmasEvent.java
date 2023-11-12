@@ -1,13 +1,13 @@
 package christmas.controller;
 
 import christmas.enums.Menu;
-import christmas.model.Receipt;
+import christmas.model.Order;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.HashMap;
 
 public class ChristmasEvent {
-    private Receipt receipt;
+    private Order order;
     private OutputView outputView = new OutputView();
 
     public void startEvent() {
@@ -19,12 +19,12 @@ public class ChristmasEvent {
     public void takeOrder() {
         int date = InputView.readDate();
         HashMap<Menu, Integer> orderMenus = InputView.order();
-        receipt = new Receipt(date, orderMenus);
+        order = new Order(date, orderMenus);
     }
 
     public void printOrderMenu() {
-        outputView.printOrderMenu(receipt.getOrderMenus());
-        outputView.printTotalPrice(receipt.getTotalPrice());
+        outputView.printOrderMenu(order.getOrderMenus());
+        outputView.printTotalPrice(order.getTotalPrice());
 
     }
 
@@ -33,7 +33,7 @@ public class ChristmasEvent {
     }
 
     public boolean checkPresentEvent(){
-        if(receipt.getTotalPrice() >= 120000){
+        if(order.getTotalPrice() >= 120000){
             return true;
         }
         return false;
