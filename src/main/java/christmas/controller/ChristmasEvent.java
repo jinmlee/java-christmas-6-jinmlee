@@ -1,13 +1,14 @@
 package christmas.controller;
 
+import christmas.enums.Event;
 import christmas.enums.Menu;
-import christmas.model.Order;
+import christmas.model.Receipt;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.HashMap;
 
 public class ChristmasEvent {
-    private Order order;
+    private Receipt receipt;
     private OutputView outputView = new OutputView();
 
     public void startEvent() {
@@ -19,23 +20,21 @@ public class ChristmasEvent {
     public void takeOrder() {
         int date = InputView.readDate();
         HashMap<Menu, Integer> orderMenus = InputView.order();
-        order = new Order(date, orderMenus);
+        receipt = new Receipt(date, orderMenus);
     }
 
     public void printOrderMenu() {
-        outputView.printOrderMenu(order.getOrderMenus());
-        outputView.printTotalPrice(order.getTotalPrice());
-
+        outputView.printOrderMenu(receipt.getOrderMenus());
+        outputView.printTotalPrice(receipt.getTotalPrice());
     }
 
-    public void applyEvent(){
-        outputView.printPresentMenu(checkPresentEvent());
-    }
-
-    public boolean checkPresentEvent(){
-        if(order.getTotalPrice() >= 120000){
-            return true;
+    public void applyEvent() {
+        outputView.printPresentMenu(receipt.applyPresentEvent());
+        if (Event.WEEKDAY.getDays().contains(receipt.getDayOfWeek())) {
+            receipt.applyWeekDayDiscount();
         }
-        return false;
+
+
+        outputView.printApplyDiscount(receipt.getApplyDiscount());
     }
 }

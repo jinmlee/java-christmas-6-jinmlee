@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.enums.Event;
 import christmas.enums.Menu;
 import java.util.HashMap;
 
@@ -26,5 +27,16 @@ public class OutputView {
             return;
         }
         System.out.println("없음");
+    }
+
+    public void printApplyDiscount(HashMap<Event, Integer> applyDiscount) {
+        System.out.println("\n<혜택 내역>");
+        if(applyDiscount.isEmpty()){
+            System.out.println("없음");
+            return;
+        }
+        for (Event event : applyDiscount.keySet()) {
+            System.out.println(event.getName() + ": -" + applyDiscount.get(event) + "원");
+        }
     }
 }

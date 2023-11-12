@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.enums.Day;
 import christmas.enums.Menu;
 import java.util.HashMap;
 
@@ -20,8 +21,13 @@ public class Order {
         return date;
     }
 
-    public int getDayWeek() {
-        return date % 7;
+    public Day getDayOfWeek() {
+        for(Day day : Day.values()){
+            if(day.getDayOfWeek() == date % 7){
+                return day;
+            }
+        }
+        return null;
     }
 
     public int getTotalPrice() {
