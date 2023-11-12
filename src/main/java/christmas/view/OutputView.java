@@ -31,7 +31,7 @@ public class OutputView {
 
     public void printApplyDiscount(HashMap<Event, Integer> applyDiscount) {
         System.out.println("\n<혜택 내역>");
-        if(applyDiscount.isEmpty()){
+        if (applyDiscount.isEmpty()) {
             System.out.println("없음");
             return;
         }

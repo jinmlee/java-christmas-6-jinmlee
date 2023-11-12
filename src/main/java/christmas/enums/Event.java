@@ -3,34 +3,19 @@ package christmas.enums;
 import java.util.List;
 
 public enum Event {
-    CHRISTMAS_D_DAY("크리스마스 디데이 할인", List.of(Day.CHRISTMAS), 100),
-    WEEKDAY("평일 할인", List.of(Day.SUNDAY, Day.MONDAY, Day.TUESDAY, Day.WEDNESDAY, Day.THURSDAY), 2023),
-    WEEKEND("주말 할인", List.of(Day.FRIDAY, Day.SATURDAY), 2023),
-    SPECIAL("특별 할인", List.of(Day.SUNDAY, Day.CHRISTMAS), 1000);
+    CHRISTMAS_D_DAY("크리스마스 디데이 할인"),
+    WEEKDAY("평일 할인"),
+    WEEKEND("주말 할인"),
+    SPECIAL("특별 할인"),
+    PRESENT("증정 이벤트");
 
     private final String name;
-    private final List<Day> days;
-    private final int discount;
 
-    Event(String name, List<Day> days, int discount) {
+    Event(String name) {
         this.name = name;
-        this.days = days;
-        this.discount = discount;
-    }
-
-    public int getPayback(int count){
-        return discount * count;
     }
 
     public String getName() {
         return name;
-    }
-
-    public List<Day> getDays() {
-        return days;
-    }
-
-    public int getDiscount() {
-        return discount;
     }
 }
