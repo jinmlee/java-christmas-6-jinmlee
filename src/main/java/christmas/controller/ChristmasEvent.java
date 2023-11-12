@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.enums.Menu;
 import christmas.event.ChristmasDayEvent;
 import christmas.event.EventInterface;
+import christmas.event.SpecialEvent;
 import christmas.event.WeekdayEvent;
 import christmas.event.WeekendEvent;
 import christmas.model.Receipt;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class ChristmasEvent {
     private final List<EventInterface> EVENTS
-            = List.of(new WeekdayEvent(), new WeekendEvent(), new ChristmasDayEvent());
+            = List.of(new WeekdayEvent(), new WeekendEvent(), new ChristmasDayEvent(), new SpecialEvent());
     private Receipt receipt;
     private OutputView outputView = new OutputView();
 
