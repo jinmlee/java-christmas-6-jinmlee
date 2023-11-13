@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.enums.Menu;
 import christmas.event.ChristmasDayEvent;
 import christmas.event.EventInterface;
+import christmas.event.PresentEvent;
 import christmas.event.SpecialEvent;
 import christmas.event.WeekdayEvent;
 import christmas.event.WeekendEvent;
@@ -13,9 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ChristmasEvent {
-    private final List<EventInterface> EVENTS
-            = List.of(new WeekdayEvent(), new WeekendEvent(), new ChristmasDayEvent(), new SpecialEvent());
-    private final int MiN_ORDER_AMOUNT = 10000;
+
+    private final List<EventInterface> EVENTS = List.of(
+            new WeekdayEvent(), new WeekendEvent(), new ChristmasDayEvent(),
+            new SpecialEvent(), new PresentEvent());
+
+    private final int EVENT_MiN_ORDER_AMOUNT = 10000;
 
     private Receipt receipt;
     private OutputView outputView = new OutputView();
@@ -23,7 +27,7 @@ public class ChristmasEvent {
     public void startEvent() {
         takeOrder();
         printOrder();
-        if (receipt.getTotalPrice() >= MiN_ORDER_AMOUNT) {
+        if (receipt.getTotalPrice() >= EVENT_MiN_ORDER_AMOUNT) {
             applyEvent();
         }
         printApplyEvent();
@@ -49,7 +53,7 @@ public class ChristmasEvent {
     }
 
     public void printApplyEvent() {
-        outputView.printPresentMenu(receipt.applyPresentEvent());
+        outputView.printPresentMenu(receipt.getBenefitsDetails());
         outputView.printBenefitsDetails(receipt.getBenefitsDetails());
         outputView.printTotalBenefitAmount(receipt.getTotalBenefitAmount());
         outputView.printFinalTotalPrice(receipt.getFinalTotalPrice());

@@ -6,8 +6,6 @@ import christmas.enums.Menu;
 import java.util.HashMap;
 
 public class Receipt extends Order {
-    public static final int PRESENT_MIN_PAYMENT = 120000;
-
     private HashMap<Event, Integer> benefitsDetails = new HashMap<>();
 
     public Receipt(int date, HashMap<Menu, Integer> orderMenus) {
@@ -16,14 +14,6 @@ public class Receipt extends Order {
 
     public HashMap<Event, Integer> getBenefitsDetails() {
         return benefitsDetails;
-    }
-
-    public boolean applyPresentEvent() {
-        if (getTotalPrice() >= PRESENT_MIN_PAYMENT) {
-            benefitsDetails.put(Event.PRESENT, Menu.CHAMPAGNE.getPrice());
-            return true;
-        }
-        return false;
     }
 
     public int getTotalBenefitAmount() {
@@ -36,7 +26,7 @@ public class Receipt extends Order {
 
     public int getFinalTotalPrice() {
         int totalBenefitAmount = getTotalBenefitAmount();
-        if (applyPresentEvent()) {
+        if (benefitsDetails.containsKey(Event.PRESENT)) {
             totalBenefitAmount -= Menu.CHAMPAGNE.getPrice();
         }
         return getTotalPrice() - totalBenefitAmount;

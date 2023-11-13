@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class OutputView {
     private final int MINUS = -1;
+
     public void printOrderMenu(HashMap<Menu, Integer> orderMenus) {
         System.out.println("12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n");
         System.out.println("<주문 메뉴>");
@@ -20,9 +21,9 @@ public class OutputView {
         System.out.printf("%,d원\n", totalPrice);
     }
 
-    public void printPresentMenu(boolean checkTotalPrice) {
+    public void printPresentMenu(HashMap<Event, Integer> benefitsDetails) {
         System.out.println("\n<증정 메뉴>");
-        if (checkTotalPrice) {
+        if (benefitsDetails.containsKey(Event.PRESENT)) {
             System.out.println(Menu.CHAMPAGNE.getName() + " 1개");
             return;
         }
