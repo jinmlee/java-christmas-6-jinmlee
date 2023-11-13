@@ -9,7 +9,8 @@ public enum Day {
     WEDNESDAY(6),
     THURSDAY(7);
 
-    private int dayOfWeek;
+    private static final int WEEK = 7;
+    private final int dayOfWeek;
 
     Day(int dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
@@ -17,5 +18,14 @@ public enum Day {
 
     public int getDayOfWeek() {
         return dayOfWeek;
+    }
+
+    public static Day getVisitDayOfWeek(int date){
+        for(Day day : values()){
+            if(day.dayOfWeek == date % WEEK){
+                return day;
+            }
+        }
+        return null;
     }
 }

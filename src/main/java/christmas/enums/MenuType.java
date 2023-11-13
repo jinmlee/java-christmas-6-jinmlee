@@ -6,7 +6,7 @@ public enum MenuType {
     DESSERT("디저트"),
     BEVERAGE("음료");
 
-    private String type;
+    private final String type;
 
     MenuType(String type) {
         this.type = type;
