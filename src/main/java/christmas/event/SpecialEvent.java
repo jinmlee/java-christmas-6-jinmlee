@@ -10,7 +10,7 @@ public class SpecialEvent implements EventInterface {
 
     @Override
     public boolean checkApplyEvent(Receipt receipt) {
-        if (receipt.getTotalPrice() >= EVENT_MIN_PAYMENT && DAYS.contains(receipt.getDate())) {
+        if (DAYS.contains(receipt.getDate())) {
             return true;
         }
         return false;

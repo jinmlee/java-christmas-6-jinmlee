@@ -11,7 +11,7 @@ public class ChristmasDayEvent implements EventInterface {
 
     @Override
     public boolean checkApplyEvent(Receipt receipt) {
-        if (receipt.getTotalPrice() >= EVENT_MIN_PAYMENT && receipt.getDate() <= CHRISTMAS_DAY) {
+        if (receipt.getDate() <= CHRISTMAS_DAY) {
             return true;
         }
         return false;

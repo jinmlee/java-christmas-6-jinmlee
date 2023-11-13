@@ -15,6 +15,7 @@ import java.util.List;
 public class ChristmasEvent {
     private final List<EventInterface> EVENTS
             = List.of(new WeekdayEvent(), new WeekendEvent(), new ChristmasDayEvent(), new SpecialEvent());
+    private final int MiN_ORDER_AMOUNT = 10000;
 
     private Receipt receipt;
     private OutputView outputView = new OutputView();
@@ -22,7 +23,9 @@ public class ChristmasEvent {
     public void startEvent() {
         takeOrder();
         printOrder();
-        applyEvent();
+        if (receipt.getTotalPrice() >= MiN_ORDER_AMOUNT) {
+            applyEvent();
+        }
         printApplyEvent();
     }
 

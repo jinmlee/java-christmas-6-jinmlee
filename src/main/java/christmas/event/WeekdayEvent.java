@@ -14,7 +14,7 @@ public class WeekdayEvent implements EventInterface {
 
     @Override
     public boolean checkApplyEvent(Receipt receipt) {
-        if (EVENT_MIN_PAYMENT <= receipt.getTotalPrice() && WEEKDAY.contains(receipt.getDayOfWeek())) {
+        if (WEEKDAY.contains(receipt.getDayOfWeek())) {
             return true;
         }
         return false;
