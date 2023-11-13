@@ -11,7 +11,7 @@ public enum Day {
 
     private int dayOfWeek;
 
-    Day(int dayOfWeek){
+    Day(int dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 

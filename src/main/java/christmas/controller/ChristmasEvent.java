@@ -15,6 +15,7 @@ import java.util.List;
 public class ChristmasEvent {
     private final List<EventInterface> EVENTS
             = List.of(new WeekdayEvent(), new WeekendEvent(), new ChristmasDayEvent(), new SpecialEvent());
+
     private Receipt receipt;
     private OutputView outputView = new OutputView();
 

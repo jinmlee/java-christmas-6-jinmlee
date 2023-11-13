@@ -8,11 +8,11 @@ public enum MenuType {
 
     private String type;
 
-    MenuType(String type){
+    MenuType(String type) {
         this.type = type;
     }
 
-    public String getType(){
+    public String getType() {
         return type;
     }
 }

@@ -98,9 +98,9 @@ public class InputCheck {
         }
     }
 
-    public static void checkOnlyOrderBeverage(HashMap<Menu, Integer> orderMenus){
-        for(Menu menu : orderMenus.keySet()){
-            if(!menu.getType().equals(MenuType.BEVERAGE)){
+    public static void checkOnlyOrderBeverage(HashMap<Menu, Integer> orderMenus) {
+        for (Menu menu : orderMenus.keySet()) {
+            if (!menu.getType().equals(MenuType.BEVERAGE)) {
                 return;
             }
         }

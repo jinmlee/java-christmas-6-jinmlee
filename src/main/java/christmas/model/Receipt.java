@@ -43,8 +43,8 @@ public class Receipt extends Order {
     }
 
     public Badge getBadge() {
-        for(Badge badge : Badge.values()){
-            if(getTotalBenefitAmount() >= badge.getMinBenefitAmount()){
+        for (Badge badge : Badge.values()) {
+            if (getTotalBenefitAmount() >= badge.getMinBenefitAmount()) {
                 return badge;
             }
         }

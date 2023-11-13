@@ -40,17 +40,17 @@ public class OutputView {
         }
     }
 
-    public void printTotalBenefitAmount(int totalBenefitAmount){
+    public void printTotalBenefitAmount(int totalBenefitAmount) {
         System.out.println("\n<총혜택 금액>");
         System.out.printf("%,d원\n", totalBenefitAmount * -1);
     }
 
-    public void printFinalTotalPrice(int finalTotalPrice){
+    public void printFinalTotalPrice(int finalTotalPrice) {
         System.out.println("\n<할인 후 예상 결제 금액>");
         System.out.printf("%,d원\n", finalTotalPrice);
     }
 
-    public void printBadge(Badge badge){
+    public void printBadge(Badge badge) {
         System.out.println("\n<12월 이벤트 배지>");
         System.out.println(badge.getName());
     }

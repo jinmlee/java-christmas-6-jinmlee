@@ -22,8 +22,8 @@ public class Order {
     }
 
     public Day getDayOfWeek() {
-        for(Day day : Day.values()){
-            if(day.getDayOfWeek() == date % 7){
+        for (Day day : Day.values()) {
+            if (day.getDayOfWeek() == date % 7) {
                 return day;
             }
         }
