@@ -48,5 +48,6 @@ public class ChristmasEvent {
         outputView.printPresentMenu(receipt.applyPresentEvent());
         outputView.printApplyDiscount(receipt.getApplyDiscount());
         outputView.printTotalBenefitAmount(receipt.getTotalBenefitAmount());
+        outputView.printFinalTotalPrice(receipt.getFinalTotalPrice());
     }
 }

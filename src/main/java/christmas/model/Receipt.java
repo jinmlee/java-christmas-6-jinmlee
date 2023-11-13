@@ -27,10 +27,18 @@ public class Receipt extends Order {
 
     public int getTotalBenefitAmount() {
         int totalBenefitAmount = 0;
-        for(int benefitAmount : applyDiscount.values()){
+        for (int benefitAmount : applyDiscount.values()) {
             totalBenefitAmount += benefitAmount;
         }
         totalBenefitAmount *= -1;
         return totalBenefitAmount;
+    }
+
+    public int getFinalTotalPrice() {
+        int totalBenefitAmount = getTotalBenefitAmount();
+        if(applyPresentEvent()){
+            totalBenefitAmount += Menu.CHAMPAGNE.getPrice();
+        }
+        return getTotalPrice() + totalBenefitAmount;
     }
 }
