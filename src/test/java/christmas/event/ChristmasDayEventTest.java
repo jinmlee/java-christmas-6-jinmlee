@@ -38,7 +38,7 @@ class ChristmasDayEventTest {
         }});
     }
 
-    @DisplayName("크리스마스 디데이 이벤트에 참여가능한지 검사하는 테스트")
+    @DisplayName("디데이 이벤트 적용 체크 테스트 코드, 방문날짜가 25일 이하여야 하고 주문금액이 10000원 이상일때 적용")
     @Test
     void checkApplyEvent() {
         assertThat(christmasDayEvent.checkApplyEvent(receipt1)).isFalse();
@@ -56,7 +56,7 @@ class ChristmasDayEventTest {
 
     @DisplayName("디데이 할인 혜택 내역이 잘 저장되는지 확인하는 테스트")
     @Test
-    void test1(){
+    void applyEvent() {
         christmasDayEvent.applyEvent(receipt2);
         assertThat(receipt2.getBenefitsDetails().get(Event.CHRISTMAS_D_DAY)).isNotNull();
         christmasDayEvent.applyEvent(receipt3);
