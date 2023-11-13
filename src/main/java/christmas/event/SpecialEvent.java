@@ -5,7 +5,7 @@ import christmas.model.Receipt;
 import java.util.List;
 
 public class SpecialEvent implements EventInterface {
-    private final List<Integer> DAYS = List.of(3, 10, 17, 24, 25);
+    private final List<Integer> DAYS = List.of(3, 10, 17, 24, 25, 31);
     private final int PAYBACK = 1000;
 
     @Override
