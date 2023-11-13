@@ -24,7 +24,7 @@ public class WeekdayEvent implements EventInterface {
     public void applyEvent(Receipt receipt) {
         int discount = getDiscount(receipt);
         if (discount > 0) {
-            receipt.getApplyDiscount().put(Event.WEEKDAY, discount);
+            receipt.getBenefitsDetails().put(Event.WEEKDAY, discount);
         }
     }
 

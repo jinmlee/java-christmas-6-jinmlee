@@ -20,7 +20,7 @@ public class ChristmasDayEvent implements EventInterface {
     @Override
     public void applyEvent(Receipt receipt) {
         int discount = getDiscount(receipt.getDate());
-        receipt.getApplyDiscount().put(Event.CHRISTMAS_D_DAY, discount);
+        receipt.getBenefitsDetails().put(Event.CHRISTMAS_D_DAY, discount);
     }
 
     public int getDiscount(int date) {

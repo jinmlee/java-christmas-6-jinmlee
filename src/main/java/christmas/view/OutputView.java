@@ -29,14 +29,14 @@ public class OutputView {
         System.out.println("없음");
     }
 
-    public void printApplyDiscount(HashMap<Event, Integer> applyDiscount) {
+    public void printBenefitsDetails(HashMap<Event, Integer> benefitsDetails) {
         System.out.println("\n<혜택 내역>");
-        if (applyDiscount.isEmpty()) {
+        if (benefitsDetails.isEmpty()) {
             System.out.println("없음");
             return;
         }
-        for (Event event : applyDiscount.keySet()) {
-            System.out.printf("%s: -%,d원\n", event.getName(), applyDiscount.get(event));
+        for (Event event : benefitsDetails.keySet()) {
+            System.out.printf("%s: -%,d원\n", event.getName(), benefitsDetails.get(event));
         }
     }
 

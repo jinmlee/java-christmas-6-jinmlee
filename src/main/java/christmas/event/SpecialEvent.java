@@ -18,6 +18,6 @@ public class SpecialEvent implements EventInterface {
 
     @Override
     public void applyEvent(Receipt receipt) {
-        receipt.getApplyDiscount().put(Event.SPECIAL, PAYBACK);
+        receipt.getBenefitsDetails().put(Event.SPECIAL, PAYBACK);
     }
 }

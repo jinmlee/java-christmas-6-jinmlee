@@ -23,7 +23,7 @@ public class WeekendEvent implements EventInterface {
     public void applyEvent(Receipt receipt) {
         int discount = getDiscount(receipt);
         if (discount > 0) {
-            receipt.getApplyDiscount().put(Event.WEEKEND, discount);
+            receipt.getBenefitsDetails().put(Event.WEEKEND, discount);
         }
     }
 
