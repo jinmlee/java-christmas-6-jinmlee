@@ -1,5 +1,6 @@
 package christmas.model;
 
+import christmas.enums.Badge;
 import christmas.enums.Event;
 import christmas.enums.Menu;
 import java.util.HashMap;
@@ -30,15 +31,23 @@ public class Receipt extends Order {
         for (int benefitAmount : applyDiscount.values()) {
             totalBenefitAmount += benefitAmount;
         }
-        totalBenefitAmount *= -1;
         return totalBenefitAmount;
     }
 
     public int getFinalTotalPrice() {
         int totalBenefitAmount = getTotalBenefitAmount();
-        if(applyPresentEvent()){
-            totalBenefitAmount += Menu.CHAMPAGNE.getPrice();
+        if (applyPresentEvent()) {
+            totalBenefitAmount -= Menu.CHAMPAGNE.getPrice();
         }
-        return getTotalPrice() + totalBenefitAmount;
+        return getTotalPrice() - totalBenefitAmount;
+    }
+
+    public Badge getBadge() {
+        for(Badge badge : Badge.values()){
+            if(getTotalBenefitAmount() >= badge.getMinBenefitAmount()){
+                return badge;
+            }
+        }
+        return Badge.NOTHING;
     }
 }
