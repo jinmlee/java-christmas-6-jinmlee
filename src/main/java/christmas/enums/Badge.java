@@ -21,4 +21,13 @@ public enum Badge {
     public int getMinBenefitAmount() {
         return minBenefitAmount;
     }
+
+    public static Badge getGiftBadge(int totalBenefitAmount) {
+        for (Badge badge : values()) {
+            if (totalBenefitAmount >= badge.getMinBenefitAmount()) {
+                return badge;
+            }
+        }
+        return NOTHING;
+    }
 }
