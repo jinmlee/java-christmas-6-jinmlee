@@ -38,4 +38,9 @@ public class OutputView {
             System.out.printf("%s: -%,d원\n", event.getName(), applyDiscount.get(event));
         }
     }
+
+    public void printTotalBenefitAmount(int totalBenefitAmount){
+        System.out.println("\n<총혜택 금액>");
+        System.out.printf("%,d원", totalBenefitAmount);
+    }
 }

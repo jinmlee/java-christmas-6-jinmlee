@@ -24,4 +24,13 @@ public class Receipt extends Order {
         }
         return false;
     }
+
+    public int getTotalBenefitAmount() {
+        int totalBenefitAmount = 0;
+        for(int benefitAmount : applyDiscount.values()){
+            totalBenefitAmount += benefitAmount;
+        }
+        totalBenefitAmount *= -1;
+        return totalBenefitAmount;
+    }
 }
