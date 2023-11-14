@@ -20,19 +20,19 @@ class SpecialEventTest {
     @BeforeEach
     void setUp() {
         specialEvent = new SpecialEvent();
-        receipt1 = new Receipt(1, new HashMap<Menu, Integer>() {{
+        receipt1 = new Receipt(1, new HashMap<>() {{
             put(Menu.BARBECUE_RIBS, 2);
         }});
 
-        receipt2 = new Receipt(4, new HashMap<Menu, Integer>() {{
+        receipt2 = new Receipt(4, new HashMap<>() {{
             put(Menu.BARBECUE_RIBS, 2);
         }});
 
-        receipt3 = new Receipt(25, new HashMap<Menu, Integer>() {{
+        receipt3 = new Receipt(25, new HashMap<>() {{
             put(Menu.BARBECUE_RIBS, 2);
         }});
 
-        receipt4 = new Receipt(31, new HashMap<Menu, Integer>() {{
+        receipt4 = new Receipt(31, new HashMap<>() {{
             put(Menu.BARBECUE_RIBS, 2);
         }});
     }

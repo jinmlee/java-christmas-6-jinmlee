@@ -20,9 +20,9 @@ public enum Day {
         return dayOfWeek;
     }
 
-    public static Day getVisitDayOfWeek(int date){
-        for(Day day : values()){
-            if(day.dayOfWeek == date % WEEK){
+    public static Day getVisitDayOfWeek(int date) {
+        for (Day day : values()) {
+            if (day.dayOfWeek == date % WEEK) {
                 return day;
             }
         }

@@ -159,7 +159,7 @@ class InputCheckTest {
 
     @DisplayName("주문 목록에 음료만 있을시 예외처리")
     @Test
-    void checkOnlyOrderBeverage(){
+    void checkOnlyOrderBeverage() {
         HashMap<Menu, Integer> onlyBeverageMenu = new HashMap<>();
         onlyBeverageMenu.put(Menu.ZERO_COLA, 1);
         onlyBeverageMenu.put(Menu.CHAMPAGNE, 5);

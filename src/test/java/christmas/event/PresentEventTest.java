@@ -20,23 +20,23 @@ class PresentEventTest {
     @BeforeEach
     void setUp() {
         presentEvent = new PresentEvent();
-        receipt1 = new Receipt(30, new HashMap<Menu, Integer>() {{
+        receipt1 = new Receipt(30, new HashMap<>() {{
             put(Menu.ZERO_COLA, 1);
             put(Menu.YANGSONG_SOUP, 1);
             put(Menu.BARBECUE_RIBS, 2);
         }});
 
-        receipt2 = new Receipt(1, new HashMap<Menu, Integer>() {{
+        receipt2 = new Receipt(1, new HashMap<>() {{
             put(Menu.BARBECUE_RIBS, 2);
             put(Menu.TBONE_STEAK, 2);
         }});
 
-        receipt3 = new Receipt(25, new HashMap<Menu, Integer>() {{
+        receipt3 = new Receipt(25, new HashMap<>() {{
             put(Menu.CHOCO_CAKE, 2);
             put(Menu.ICECREAM, 2);
         }});
 
-        receipt4 = new Receipt(31, new HashMap<Menu, Integer>() {{
+        receipt4 = new Receipt(31, new HashMap<>() {{
             put(Menu.BARBECUE_RIBS, 2);
             put(Menu.CHOCO_CAKE, 2);
             put(Menu.TAPAS, 2);
