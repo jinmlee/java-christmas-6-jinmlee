@@ -1,7 +1,6 @@
 package christmas.event;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import christmas.enums.Event;
 import christmas.enums.Menu;

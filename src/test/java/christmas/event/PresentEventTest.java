@@ -10,8 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class WeekdayEventTest {
-    private WeekdayEvent weekdayEvent;
+class PresentEventTest {
+    private PresentEvent presentEvent;
     private Receipt receipt1;
     private Receipt receipt2;
     private Receipt receipt3;
@@ -19,7 +19,7 @@ class WeekdayEventTest {
 
     @BeforeEach
     void setUp() {
-        weekdayEvent = new WeekdayEvent();
+        presentEvent = new PresentEvent();
         receipt1 = new Receipt(30, new HashMap<Menu, Integer>() {{
             put(Menu.ZERO_COLA, 1);
             put(Menu.YANGSONG_SOUP, 1);
@@ -43,28 +43,21 @@ class WeekdayEventTest {
         }});
     }
 
-    @DisplayName("평일 할인 적용 체크 테스트코드, 방문날짜가 일,월,화,수,목요일에 포함될 때 적용")
+    @DisplayName("증정 이벤트 적용 체크 테스트, 토탈 주문 금액이 12만원 이상일 때 적용")
     @Test
     void checkApplyEvent() {
-        assertThat(weekdayEvent.checkApplyEvent(receipt1)).isFalse();
-        assertThat(weekdayEvent.checkApplyEvent(receipt2)).isFalse();
-        assertThat(weekdayEvent.checkApplyEvent(receipt3)).isTrue();
-        assertThat(weekdayEvent.checkApplyEvent(receipt4)).isTrue();
+        assertThat(presentEvent.checkApplyEvent(receipt1)).isFalse();
+        assertThat(presentEvent.checkApplyEvent(receipt2)).isTrue();
+        assertThat(presentEvent.checkApplyEvent(receipt3)).isFalse();
+        assertThat(presentEvent.checkApplyEvent(receipt4)).isTrue();
     }
 
-    @DisplayName("평일할인 디저트 메뉴만 할인 적용되는지 테스트")
-    @Test
-    void getDiscount() {
-        assertThat(weekdayEvent.getDiscount(receipt3)).isEqualTo(8092);
-        assertThat(weekdayEvent.getDiscount(receipt4)).isEqualTo(4046);
-    }
-
-    @DisplayName("적용된 평일 할인 내역이 잘 저장되는지 테스트")
+    @DisplayName("적용된 증정 이벤트 내역이 잘 저장되는지 확인")
     @Test
     void applyEvent() {
-        weekdayEvent.applyEvent(receipt3);
-        assertThat(receipt3.getBenefitsDetails().get(Event.WEEKDAY)).isNotNull();
-        weekdayEvent.applyEvent(receipt4);
-        assertThat(receipt4.getBenefitsDetails().get(Event.WEEKDAY)).isNotNull();
+        presentEvent.applyEvent(receipt2);
+        assertThat(receipt2.getBenefitsDetails().get(Event.PRESENT)).isNotNull();
+        presentEvent.applyEvent(receipt4);
+        assertThat(receipt4.getBenefitsDetails().get(Event.PRESENT)).isNotNull();
     }
 }
