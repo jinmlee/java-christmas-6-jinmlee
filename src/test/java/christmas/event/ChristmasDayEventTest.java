@@ -21,8 +21,8 @@ class ChristmasDayEventTest {
     void setUp() {
         christmasDayEvent = new ChristmasDayEvent();
 
-        receipt1 = new Receipt(10, new HashMap<Menu, Integer>() {{
-            put(Menu.YANGSONG_SOUP, 1);
+        receipt1 = new Receipt(31, new HashMap<Menu, Integer>() {{
+            put(Menu.BARBECUE_RIBS, 2);
         }});
 
         receipt2 = new Receipt(1, new HashMap<Menu, Integer>() {{
@@ -38,7 +38,7 @@ class ChristmasDayEventTest {
         }});
     }
 
-    @DisplayName("디데이 이벤트 적용 체크 테스트 코드, 방문날짜가 25일 이하여야 하고 주문금액이 10000원 이상일때 적용")
+    @DisplayName("디데이 이벤트 적용 체크 테스트 코드, 방문날짜가 25일 이하일때 적용")
     @Test
     void checkApplyEvent() {
         assertThat(christmasDayEvent.checkApplyEvent(receipt1)).isFalse();

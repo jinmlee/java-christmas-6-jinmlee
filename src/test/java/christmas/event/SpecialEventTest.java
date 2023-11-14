@@ -21,8 +21,8 @@ class SpecialEventTest {
     @BeforeEach
     void setUp() {
         specialEvent = new SpecialEvent();
-        receipt1 = new Receipt(3, new HashMap<Menu, Integer>() {{
-            put(Menu.ZERO_COLA, 1);
+        receipt1 = new Receipt(1, new HashMap<Menu, Integer>() {{
+            put(Menu.BARBECUE_RIBS, 2);
         }});
 
         receipt2 = new Receipt(4, new HashMap<Menu, Integer>() {{
@@ -38,7 +38,7 @@ class SpecialEventTest {
         }});
     }
 
-    @DisplayName("스페셜 할인 적용 체크 테스트, 방문날짜가 달력에 별이 찍힌 날과 같고, 주문금액이 10000원 이상일 때 적용")
+    @DisplayName("스페셜 할인 적용 체크 테스트, 방문날짜가 달력에 별이 찍힌 날과 같을 때 적용")
     @Test
     void checkApplyEvent() {
         assertThat(specialEvent.checkApplyEvent(receipt1)).isFalse();

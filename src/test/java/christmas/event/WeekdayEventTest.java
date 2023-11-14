@@ -1,7 +1,6 @@
 package christmas.event;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import christmas.enums.Event;
 import christmas.enums.Menu;
@@ -21,9 +20,10 @@ class WeekdayEventTest {
     @BeforeEach
     void setUp() {
         weekdayEvent = new WeekdayEvent();
-        receipt1 = new Receipt(10, new HashMap<Menu, Integer>() {{
+        receipt1 = new Receipt(30, new HashMap<Menu, Integer>() {{
             put(Menu.ZERO_COLA, 1);
             put(Menu.YANGSONG_SOUP, 1);
+            put(Menu.BARBECUE_RIBS, 2);
         }});
 
         receipt2 = new Receipt(1, new HashMap<Menu, Integer>() {{
@@ -43,7 +43,7 @@ class WeekdayEventTest {
         }});
     }
 
-    @DisplayName("평일 할인 적용 체크 테스트코드, 방문날짜가 일,월,화,수,목요일에 포함되고 주문금액이 만원 이상만 적용")
+    @DisplayName("평일 할인 적용 체크 테스트코드, 방문날짜가 일,월,화,수,목요일에 포함될 때 적용")
     @Test
     void checkApplyEvent() {
         assertThat(weekdayEvent.checkApplyEvent(receipt1)).isFalse();

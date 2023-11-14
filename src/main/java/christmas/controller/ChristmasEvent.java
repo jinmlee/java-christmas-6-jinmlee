@@ -14,12 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ChristmasEvent {
-
+    private final int EVENT_MiN_ORDER_AMOUNT = 10000;
     private final List<EventInterface> EVENTS = List.of(
             new WeekdayEvent(), new WeekendEvent(), new ChristmasDayEvent(),
             new SpecialEvent(), new PresentEvent());
-
-    private final int EVENT_MiN_ORDER_AMOUNT = 10000;
 
     private Receipt receipt;
     private OutputView outputView = new OutputView();

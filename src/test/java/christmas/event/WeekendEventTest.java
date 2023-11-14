@@ -43,7 +43,7 @@ class WeekendEventTest {
         }});
     }
 
-    @DisplayName("주말할인 적용 체크 테스트 코드, 방문날짜가 금,토요일이 포함되고, 주문금액이 10000원이 넘을때 적용")
+    @DisplayName("주말할인 적용 체크 테스트 코드, 방문날짜가 금,토요일이 포함될때 적용")
     @Test
     void checkApplyEvent() {
         assertThat(weekendEvent.checkApplyEvent(receipt1)).isFalse();
