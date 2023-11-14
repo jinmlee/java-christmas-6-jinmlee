@@ -5,7 +5,7 @@ import christmas.enums.Menu;
 import christmas.model.Receipt;
 
 public class PresentEvent implements EventInterface {
-    private final int PRESENT_MIN_ORDER_AMOUNT = 120000;
+    private static final int PRESENT_MIN_ORDER_AMOUNT = 120000;
 
     @Override
     public boolean checkApplyEvent(Receipt receipt) {

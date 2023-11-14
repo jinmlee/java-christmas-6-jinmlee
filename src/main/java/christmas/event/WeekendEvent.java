@@ -8,8 +8,8 @@ import christmas.model.Receipt;
 import java.util.List;
 
 public class WeekendEvent implements EventInterface {
-    private final List<Day> WEEKEND = List.of(Day.FRIDAY, Day.SATURDAY);
-    private final int PAYBACK = 2023;
+    private static final List<Day> WEEKEND = List.of(Day.FRIDAY, Day.SATURDAY);
+    private static final int WEEKEND_PAYBACK = 2023;
 
     @Override
     public boolean checkApplyEvent(Receipt receipt) {
@@ -31,7 +31,7 @@ public class WeekendEvent implements EventInterface {
         int discount = 0;
         for (Menu menu : receipt.getOrderMenus().keySet()) {
             if (menu.getType().equals(MenuType.MAIN)) {
-                discount += receipt.getOrderMenus().get(menu) * PAYBACK;
+                discount += receipt.getOrderMenus().get(menu) * WEEKEND_PAYBACK;
             }
         }
         return discount;

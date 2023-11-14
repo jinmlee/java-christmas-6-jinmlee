@@ -4,10 +4,10 @@ import christmas.enums.Event;
 import christmas.model.Receipt;
 
 public class ChristmasDayEvent implements EventInterface {
-    private final int CHRISTMAS_DAY = 25;
-    private final int START_PAYBACK = 1000;
-    private final int DAILY_PAYBACK = 100;
-    private final int START_DATE = 1;
+    private static final int CHRISTMAS_DAY = 25;
+    private static final int START_PAYBACK = 1000;
+    private static final int DAILY_PAYBACK = 100;
+    private static final int START_DATE = 1;
 
     @Override
     public boolean checkApplyEvent(Receipt receipt) {
